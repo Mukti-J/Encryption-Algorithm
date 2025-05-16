@@ -33,7 +33,7 @@ Caesar Cipher adalah algoritma kriptografi klasik berbasis **Substitusi Sederhan
 
 ### 🧩 Versi 2: Caesar Encrypt (Custom Key) 
 
-- — **[Versi Ini]** User bisa memasukkan sendiri nilai **key** untuk proses enkripsi dan dekripsi
+- **Versi Ini** User bisa memasukkan sendiri nilai **key** untuk proses enkripsi dan dekripsi
 - Rumus dasar:
   - Enkripsi:  
     \[
