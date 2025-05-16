@@ -21,7 +21,7 @@ Folder ini berisi implementasi **Caesar Cipher** dengan antarmuka grafis menggun
 
 ## 📦 Berkas
 
-- `caesar_cipher.py`  
+- `Caesar Encryption.py`  
   Script Python lengkap dengan GUI (`tkinter`)
 
 ## ⚙️ Prasyarat
