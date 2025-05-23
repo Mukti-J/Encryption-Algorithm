@@ -4,8 +4,8 @@ Selamat datang di **Encryption & Data Security Learning Hub**!
 Repo ini menjadi tempat terpusat bagi proyek‑proyek pembelajaran dan eksperimen Saya tentang algoritma enkripsi, kriptografi, serta praktik keamanan data.
 
 ## 📂 Struktur Direktori
-- **Caesar/**  
+- **Caesar:**  
   Implementasi GUI Python untuk Caesar Cipher (algoritma substitusi sederhana) dengan rumus kustom dan juga user key 
-- **Affine/**
+- **Affine:**
   Implementasi GUI Python untuk Caesar Cipher (algoritma substitusi sederhana)
 -   
