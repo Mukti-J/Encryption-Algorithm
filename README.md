@@ -7,5 +7,7 @@ Repo ini menjadi tempat terpusat bagi proyek‑proyek pembelajaran dan eksperime
 - **Caesar:**  
   Implementasi GUI Python untuk Caesar Cipher (algoritma substitusi sederhana) dengan rumus kustom dan juga user key 
 - **Affine:**
-  Implementasi GUI Python untuk Caesar Cipher (algoritma substitusi sederhana)
--   
+  Implementasi GUI Python untuk Affine Cipher (algoritma substitusi sederhana)
+- **Atbash:**
+  Implementasi GUI Python untuk Atbash Cipher (algoritma substitusi sederhana)
+- 
