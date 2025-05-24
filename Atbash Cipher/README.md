@@ -23,7 +23,7 @@ Karena sifatnya yang simetris, proses enkripsi dan dekripsi menggunakan algoritm
 
 - Input `plaintext` untuk proses enkripsi
 - Input `ciphertext` untuk proses dekripsi
-- Hasil enkripsi dan dekripsi dapat diblok dan dicopy (menggunakan Entry widget readonly) 'New Features'
+- Hasil enkripsi dan dekripsi dapat diblok dan dicopy (menggunakan Entry widget readonly) `New Features`
 - Tampilan GUI terstruktur dengan dua panel: Enkripsi dan Dekripsi
 - Tombol **Enkripsi/Dekripsi** untuk memproses input
 - Tombol **Clear** untuk mereset masing-masing panel
