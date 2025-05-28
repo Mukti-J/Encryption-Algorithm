@@ -2,41 +2,87 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 # Vigenère Cipher logic
-def vigenere_encrypt(plaintext, key):
+def vigenere_encrypt(plaintext, key, mode="Repeat"):
     result = ''
-    key = key.lower()
-    key_length = len(key)
-    key_index = 0
-
-    for char in plaintext:
+    if mode == "Autokey":
+        key_extended = extend_key_autokey(plaintext, key)
+    else:
+        key_extended = extend_key_repeat(plaintext, key)
+    for i, char in enumerate(plaintext):
         if char.isalpha():
-            shift = ord(key[key_index % key_length]) - ord('a')
+            shift = ord(key_extended[i]) - ord('a')
             if char.isupper():
                 base = ord('A')
                 result += chr((ord(char) - base + shift) % 26 + base)
             else:
                 base = ord('a')
                 result += chr((ord(char) - base + shift) % 26 + base)
-            key_index += 1
         else:
             result += char
     return result
 
-def vigenere_decrypt(ciphertext, key):
+def vigenere_decrypt(ciphertext, key, mode="Repeat"):
     result = ''
-    key = key.lower()
-    key_length = len(key)
-    key_index = 0
-
-    for char in ciphertext:
-        if char.isalpha():
-            shift = ord(key[key_index % key_length]) - ord('a')
-            if char.isupper():
-                base = ord('A')
-                result += chr((ord(char) - base - shift) % 26 + base)
+    if mode == "Autokey":
+        key_extended = key.lower()
+        key_index = 0
+        for i, char in enumerate(ciphertext):
+            if char.isalpha():
+                shift = ord(key_extended[key_index]) - ord('a')
+                if char.isupper():
+                    base = ord('A')
+                    plain_char = chr((ord(char) - base - shift) % 26 + base)
+                else:
+                    base = ord('a')
+                    plain_char = chr((ord(char) - base - shift) % 26 + base)
+                result += plain_char
+                key_extended += plain_char.lower()
+                key_index += 1
             else:
-                base = ord('a')
-                result += chr((ord(char) - base - shift) % 26 + base)
+                result += char
+        return result
+    else:
+        key_extended = extend_key_repeat(ciphertext, key)
+        for i, char in enumerate(ciphertext):
+            if char.isalpha():
+                shift = ord(key_extended[i]) - ord('a')
+                if char.isupper():
+                    base = ord('A')
+                    result += chr((ord(char) - base - shift) % 26 + base)
+                else:
+                    base = ord('a')
+                    result += chr((ord(char) - base - shift) % 26 + base)
+            else:
+                result += char
+        return result
+
+# Fungsi untuk memperpanjang key sesuai mode
+def extend_key_repeat(text, key):
+    key = key.lower()
+    key_extended = ''
+    key_index = 0
+    for char in text:
+        if char.isalpha():
+            key_extended += key[key_index % len(key)]
+            key_index += 1
+        else:
+            key_extended += char
+    return key_extended
+
+def extend_key_autokey(text, key):
+    key = key.lower()
+    key_extended = key
+    for char in text:
+        if len(key_extended) >= len([c for c in text if c.isalpha()]):
+            break
+        if char.isalpha():
+            key_extended += char.lower()
+    # Build the final key string, skipping non-alpha in text
+    result = ''
+    key_index = 0
+    for char in text:
+        if char.isalpha():
+            result += key_extended[key_index]
             key_index += 1
         else:
             result += char
@@ -45,7 +91,7 @@ def vigenere_decrypt(ciphertext, key):
 # GUI Setup
 root = tk.Tk()
 root.title("Vigenère Cipher")
-root.geometry("700x450")
+root.geometry("700x500")
 
 # Encryption Frame
 encrypt_frame = ttk.Frame(root)
@@ -60,6 +106,14 @@ tk.Label(encrypt_frame, text="Key:").pack(anchor="w", padx=5)
 key_entry = tk.Entry(encrypt_frame, width=50)
 key_entry.pack(padx=5)
 
+# Tambahkan Key Mode Selection ke Encryption Frame
+key_mode_var = tk.StringVar(value="Repeat")
+tk.Label(encrypt_frame, text="Key Mode:").pack(anchor="w", padx=5)
+key_mode_combo = ttk.Combobox(
+    encrypt_frame, textvariable=key_mode_var, values=["Repeat", "Autokey"], state="readonly", width=15
+)
+key_mode_combo.pack(anchor="w", padx=5, pady=(0, 5))
+
 encrypted_label = tk.Label(encrypt_frame, text="Hasil Enkripsi:")
 encrypted_label.pack(anchor="w", padx=5)
 ciphertext_result = tk.Entry(encrypt_frame, width=50, state="readonly")
@@ -68,10 +122,11 @@ ciphertext_result.pack(anchor="w", padx=5, pady=5)
 def handle_encrypt():
     plaintext = plaintext_entry.get()
     key = key_entry.get()
+    mode = key_mode_var.get()
     if not key.isalpha() or not key:
         messagebox.showerror("Error", "Key harus berupa huruf dan tidak boleh kosong.")
         return
-    ciphertext = vigenere_encrypt(plaintext, key)
+    ciphertext = vigenere_encrypt(plaintext, key, mode)
     ciphertext_result.config(state="normal")
     ciphertext_result.delete(0, tk.END)
     ciphertext_result.insert(0, ciphertext)
@@ -110,10 +165,11 @@ decrypted_result.pack(anchor="w", pady=5)
 def handle_decrypt():
     ciphertext = ciphertext_entry.get()
     key = key_entry_decrypt.get()
+    mode = key_mode_var.get()
     if not key.isalpha() or not key:
         messagebox.showerror("Error", "Key harus berupa huruf dan tidak boleh kosong.")
         return
-    plaintext = vigenere_decrypt(ciphertext, key)
+    plaintext = vigenere_decrypt(ciphertext, key, mode)
     decrypted_result.config(state="normal")
     decrypted_result.delete(0, tk.END)
     decrypted_result.insert(0, plaintext)
