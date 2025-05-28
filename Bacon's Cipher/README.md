@@ -12,6 +12,8 @@ Bacon's Cipher adalah metode steganografi klasik yang dikembangkan oleh Francis 
 
 ### Catatan Sejarah:
 Secara historis, pada versi asli Bacon's Cipher, huruf I/J dan U/V menggunakan kode 5-digit biner yang sama karena mengikuti alfabet Latin klasik. Pada implementasi ini, setiap huruf A-Z (26 huruf) memiliki kode unik masing-masing, dan spasi diwakili oleh kode khusus.
+> Referensi dan penjelasan lebih lanjut tentang Baconian Cipher dapat dibaca di:
+> [privacycanada.net/baconian-cipher/](https://privacycanada.net/baconian-cipher/)
 
 ## 🧩 Fitur Program
 
