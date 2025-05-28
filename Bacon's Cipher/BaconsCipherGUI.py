@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+import re
 
 # Bacon's Cipher logic
 def bacons_cipher_encrypt(text):
@@ -9,7 +10,7 @@ def bacons_cipher_encrypt(text):
         'K': 'ABABA', 'L': 'ABABB', 'M': 'ABBAA', 'N': 'ABBAB', 'O': 'ABBBA',
         'P': 'ABBBB', 'Q': 'BAAAA', 'R': 'BAAAB', 'S': 'BAABA', 'T': 'BAABB',
         'U': 'BABAA', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA', 'Z': 'BBAAB',
-        ' ': 'ACENG'  # Add a special code for Space
+        ' ': 'BBABB'  # Add a special code for Space
     }
     result = ''
     for char in text.upper():
@@ -26,7 +27,7 @@ def bacons_cipher_decrypt(ciphertext):
         'ABABA': 'K', 'ABABB': 'L', 'ABBAA': 'M', 'ABBAB': 'N', 'ABBBA': 'O',
         'ABBBB': 'P', 'BAAAA': 'Q', 'BAAAB': 'R', 'BAABA': 'S', 'BAABB': 'T',
         'BABAA': 'U', 'BABAB': 'V', 'BABBA': 'W', 'BABBB': 'X', 'BBAAA': 'Y', 'BBAAB': 'Z',
-        'ACENG': ' '
+        'BBABB': ' '
     }
     tokens = ciphertext.strip().split()
     result = ''
@@ -55,6 +56,13 @@ ciphertext_result.pack(anchor="w", padx=5, pady=5)
 
 def handle_encrypt():
     plaintext = plaintext_entry.get()
+    # Only allow A-Z and space
+    if not re.fullmatch(r'[A-Za-z ]*', plaintext):
+        messagebox.showwarning(
+            "Karakter Tidak Didukung",
+            "Ini adalah algoritma enkripsi kuno yang pada zamannya tidak menggunakan angka atau simbol aneh.\nSilakan masukkan hanya huruf A-Z dan spasi."
+        )
+        return
     ciphertext = bacons_cipher_encrypt(plaintext)
     ciphertext_result.config(state="normal")
     ciphertext_result.delete(0, tk.END)
@@ -88,6 +96,13 @@ decrypted_result.pack(anchor="w", pady=5)
 
 def handle_decrypt():
     ciphertext = ciphertext_entry.get()
+    # Only allow A-Z, space, and the special code for space (ACENG)
+    if not re.fullmatch(r'[A-Za-z ]*', ciphertext):
+        messagebox.showwarning(
+            "Karakter Tidak Didukung",
+            "Ini adalah algoritma enkripsi kuno yang pada zamannya tidak menggunakan angka atau simbol aneh.\nSilakan masukkan hanya huruf A-Z, spasi, dan kode enkripsi yang valid."
+        )
+        return
     plaintext = bacons_cipher_decrypt(ciphertext)
     decrypted_result.config(state="normal")
     decrypted_result.delete(0, tk.END)
