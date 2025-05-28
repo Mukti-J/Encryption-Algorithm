@@ -20,6 +20,8 @@ Bacon's Cipher adalah metode steganografi klasik yang dikembangkan oleh Francis 
 - Tombol **Clear** untuk mereset masing-masing panel
 - **Fitur Khusus:**
   - Program ini dapat mengenkripsi dan mendekripsi spasi antar kata dengan kode khusus (misal: 'ACENG'), sehingga hasil enkripsi tetap dapat memisahkan kata dengan benar saat didekripsi kembali.
+  - Validasi input: hanya huruf A-Z dan spasi yang diperbolehkan. Jika pengguna memasukkan angka atau simbol, akan muncul pesan peringatan bahwa algoritma ini kuno dan tidak mendukung karakter tersebut.
+  - Pesan error/penjelasan yang ramah pengguna jika input tidak valid.
 
 📄 File: `BaconsCipherGUI.py`
 
@@ -52,6 +54,7 @@ Bacon's Cipher adalah metode steganografi klasik yang dikembangkan oleh Francis 
 
 ## 📝 Catatan
 - Program ini hanya mendukung alfabet A-Z (case-insensitive)
-- Karakter selain huruf alfabet akan tetap ditampilkan apa adanya
+- Karakter selain huruf alfabet dan spasi tidak didukung, dan akan memunculkan peringatan
 - Tidak memerlukan kunci apapun untuk enkripsi/dekripsi (otomatis)
-- **Spasi antar kata akan tetap terjaga pada proses enkripsi dan dekripsi berkat fitur khusus kode spasi**
+- **Spasi antar kata akan tetap terjaga pada proses enkripsi dan dekripsi berkat fitur khusus kode spasi ('ACENG')**
+- Pesan error akan muncul jika input mengandung angka atau simbol, sesuai dengan keterbatasan algoritma kuno ini
