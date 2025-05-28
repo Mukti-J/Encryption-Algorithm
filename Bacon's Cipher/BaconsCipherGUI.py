@@ -8,14 +8,15 @@ def bacons_cipher_encrypt(text):
         'F': 'AABAB', 'G': 'AABBA', 'H': 'AABBB', 'I': 'ABAAA', 'J': 'ABAAB',
         'K': 'ABABA', 'L': 'ABABB', 'M': 'ABBAA', 'N': 'ABBAB', 'O': 'ABBBA',
         'P': 'ABBBB', 'Q': 'BAAAA', 'R': 'BAAAB', 'S': 'BAABA', 'T': 'BAABB',
-        'U': 'BABAA', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA', 'Z': 'BBAAB'
+        'U': 'BABAA', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA', 'Z': 'BBAAB',
+        ' ': 'ACENG'  # Add a special code for Space
     }
     result = ''
     for char in text.upper():
-        if char.isalpha():
+        if char in bacon_dict:
             result += bacon_dict[char] + ' '
         else:
-            result += char
+            result += char + ' '
     return result.strip()
 
 def bacons_cipher_decrypt(ciphertext):
@@ -24,15 +25,13 @@ def bacons_cipher_decrypt(ciphertext):
         'AABAB': 'F', 'AABBA': 'G', 'AABBB': 'H', 'ABAAA': 'I', 'ABAAB': 'J',
         'ABABA': 'K', 'ABABB': 'L', 'ABBAA': 'M', 'ABBAB': 'N', 'ABBBA': 'O',
         'ABBBB': 'P', 'BAAAA': 'Q', 'BAAAB': 'R', 'BAABA': 'S', 'BAABB': 'T',
-        'BABAA': 'U', 'BABAB': 'V', 'BABBA': 'W', 'BABBB': 'X', 'BBAAA': 'Y', 'BBAAB': 'Z'
+        'BABAA': 'U', 'BABAB': 'V', 'BABBA': 'W', 'BABBB': 'X', 'BBAAA': 'Y', 'BBAAB': 'Z',
+        'ACENG': ' '
     }
-    # Remove non A/B and split into 5-char groups
-    filtered = ''.join([c for c in ciphertext.upper() if c in ['A', 'B']])
-    groups = [filtered[i:i+5] for i in range(0, len(filtered), 5)]
+    tokens = ciphertext.strip().split()
     result = ''
-    for group in groups:
-        if len(group) == 5:
-            result += bacon_dict.get(group, '?')
+    for token in tokens:
+        result += bacon_dict.get(token, '?')
     return result
 
 # GUI Setup
