@@ -10,6 +10,6 @@ Repo ini menjadi tempat terpusat bagi proyek‑proyek pembelajaran dan eksperime
   Implementasi GUI Python untuk Affine Cipher (algoritma substitusi sederhana)
 - **Atbash:**
   Implementasi GUI Python untuk Atbash Cipher (algoritma substitusi sederhana)
-- Bacon's Cipher
+- **Bacon's Cipher:**
   Implementasi GUI Python untuk Bacon's Cipher (algoritma substitusi sederhana)
 - 
