@@ -12,9 +12,9 @@ Vigenère Cipher adalah algoritma kriptografi klasik berbasis **Substitusi Polia
   
   $C_i = (P_i + K_i) \bmod 26$
   
-  - $C_i$ = huruf ke-$_i$ pada ciphertext
-  - $P_i$ = huruf ke-$_i$ pada plaintext (dalam bentuk indeks 0-25)
-  - $K_i$ = huruf ke-$_i$ pada key (dalam bentuk indeks 0-25, diulang atau autokey)
+  - $C_i$ = huruf ke-$_i pada ciphertext
+  - $P_i$ = huruf ke-$_i pada plaintext (dalam bentuk indeks 0-25)
+  - $K_i$ = huruf ke-$_i pada key (dalam bentuk indeks 0-25, diulang atau autokey)
 
 - **Rumus Dekripsi**:
   
@@ -22,9 +22,9 @@ Vigenère Cipher adalah algoritma kriptografi klasik berbasis **Substitusi Polia
   
   $P_i = (C_i - K_i + 26) \bmod 26$
   
-  - $P_i$ = huruf ke-$_i$ pada plaintext
-  - $C_i$ = huruf ke-$_i$ pada ciphertext
-  - $K_i$ = huruf ke-$_i$ pada key
+  - $P_i$ = huruf ke-$_i pada plaintext
+  - $C_i$ = huruf ke-$_i pada ciphertext
+  - $K_i$ = huruf ke-$_i pada key
 
 ---
 
