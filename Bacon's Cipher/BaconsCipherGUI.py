@@ -96,7 +96,7 @@ decrypted_result.pack(anchor="w", pady=5)
 
 def handle_decrypt():
     ciphertext = ciphertext_entry.get()
-    # Only allow A-Z, space, and the special code for space (ACENG)
+    # Only allow A-Z, space, and the special code for space (BBABB)
     if not re.fullmatch(r'[A-Za-z ]*', ciphertext):
         messagebox.showwarning(
             "Karakter Tidak Didukung",
