@@ -1,4 +1,4 @@
-# Project: Beaufort & Variant Beaufort Cipher GUI
+# Project 6: Beaufort & Variant Beaufort Cipher GUI
 
 Folder ini berisi implementasi **Beaufort Cipher** dan **Variant Beaufort Cipher** dengan antarmuka grafis (GUI) menggunakan `tkinter`.
 
