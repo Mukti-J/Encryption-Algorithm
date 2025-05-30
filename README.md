@@ -16,4 +16,6 @@ Repo ini menjadi tempat terpusat bagi proyek‑proyek pembelajaran dan eksperime
   Implementasi GUI Python untuk Vigenere Cipher (algoritma substitusi polialfabetik)
 - **Beaufort Cipher:**
   Implementasi GUI Python untuk Beaufort Cipher (algoritma substitusi polialfabetik)
+- **Playfair Cipher:**
+  Implementasi GUI Python untuk Playfair Cipher (algoritma substitusi digraf)
 - 
