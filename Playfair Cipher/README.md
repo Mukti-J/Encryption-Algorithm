@@ -1,4 +1,4 @@
-# Project: Playfair Cipher GUI
+# Project 7: Playfair Cipher GUI
 
 Folder ini berisi implementasi **Playfair Cipher** dengan antarmuka grafis (GUI) menggunakan `tkinter`.
 
